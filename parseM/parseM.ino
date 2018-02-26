@@ -28,7 +28,7 @@ String parseM(String data, String &command, int &value) {
   command = "";
   value = 0;
   int i = 0;
-  while (data[i] != ':') {
+  while (data[i] != '-') {
     command += data[i];
     i++;
   }
