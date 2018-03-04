@@ -17,8 +17,7 @@ void loop() {
     while (data.length() > 0) {
       data = parseM(data, command, value);
       // put command and value switches here
-      Serial.println("command,value =  " + command + " " + value);
-
+      Serial.println("command,value = " + command + " " + value);
       
     }
   //}
@@ -38,6 +37,10 @@ String parseM(String data, String &command, int &value) {
     temp += data[i];
     value = temp.toInt();
     i++;
+  }
+  if (data[i] == ';') {
+    for (i; i < (data.length())-1; i++) {
+    }
   }
   data.remove(0,i+1);
   return data;
