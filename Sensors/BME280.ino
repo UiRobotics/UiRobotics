@@ -32,18 +32,3 @@ void loop() {
     Serial.println(message);
     delay(delayTime);
 }
-
-void printValues() {
-    Serial.print("Temperature = ");
-    Serial.print(bme.readTemperature());
-    Serial.println(" *C");
-
-    Serial.print("Pressure = ");
-
-    Serial.print(bme.readPressure() / 100.0F);
-    Serial.println(" hPa");
-
-    Serial.print("Humidity = ");
-    Serial.print(bme.readHumidity());
-    Serial.println(" %");
-}
