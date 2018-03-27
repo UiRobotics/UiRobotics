@@ -1,31 +1,26 @@
-// Idevice:skit:motor-45:servo-90;
-
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   String data = Serial.readString();
   String command;
-  int value;
+  float value;
   
-  //if (Serial.available()) {
-    if (data[0] == 'I') {
-      data = rmSemi(data); // removes Idevice: and similar I: things
-    }
-    data = rmSemi(data); // removes the destination
-    while (data.length() > 0) {
-      data = parseM(data, command, value);
-      // put command and value switches here
-      Serial.println("command,value = " + command + " " + value);
-      
-    }
-  //}
+  if (data[0] == 'I') {
+    data = rmSemi(data); // removes Idevice: and similar I: things
+  }
+  data = rmSemi(data); // removes the destination
+  while (data.length() > 0) {
+    data = parseM(data, command, value);
+    // put command and value switches here
+    Serial.println("command,value = " + command + " " + value);
+
+    
+  }
 }
 
-String parseM(String data, String &command, int &value) {
+String parseM(String data, String &command, float &value) {
   command = "";
   value = 0;
   int i = 0;
@@ -37,9 +32,9 @@ String parseM(String data, String &command, int &value) {
   i++;
   while (data[i] != ':' && data[i] != ';') {
     temp += data[i];
-    value = temp.toInt();
     i++;
   }
+  value = temp.toFloat();
   if (data[i] == ';') {
     for (i; i < (data.length())-1; i++) {
     }
